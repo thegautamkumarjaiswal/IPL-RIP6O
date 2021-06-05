@@ -14,6 +14,7 @@ Given certain input parameters regarding an innings of a T20 cricket match, pred
 1. data
    1. all_matches.csv
    1. inputFile.csv
+   2. playersList.csv
 2. CODE_OF_CONDUCT.md
 3. CONTRIBUTE.md
 4. LICENSE
@@ -22,6 +23,37 @@ Given certain input parameters regarding an innings of a T20 cricket match, pred
 7. main.py
 8. predictor.py
 9. requirments.txt
+
+### Data description:
+The first row of all_matches CSV file contains the headers for the file, with each subsequent row providing details on a single delivery.
+The headers in the file are:
+
+- match_id
+- season
+- start_date
+- venue
+- innings
+- ball
+- batting_team
+- bowling_team
+- striker
+- non_striker
+- bowler
+- runs_off_bat
+- extras
+- wides
+- noballs
+- byes
+- legbyes
+- penalty
+- wicket_type
+- player_dismissed
+- other_wicket_type
+- Other_player_dismissed
+
+Input file is a test set CSV file which have details of 6 overs in 1 inning like: bowlers, batting team.
+
+In players list CSV file conatins all players name in the match.
 
 ### Prerequisites: 
 * Basic knowledge of cricket(IPL, T-20) 
@@ -34,3 +66,5 @@ Given certain input parameters regarding an innings of a T20 cricket match, pred
 ### Welcome!, Contributors:
  Don't worry about experience, Just follow the [CONTRIBUTING](https://github.com/thegautamkumarjaiswal/IPL-RIP6O/blob/main/CONTRIBUTING.md) guidelines.
  This repository for you, try out your knowldege of coding, ML and Data science. Happy Coding!
+ 
+ 
