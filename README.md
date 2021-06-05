@@ -1,1 +1,3 @@
-# IPL-T20-innings-run-predictor
+# IPL-RIP6O
+
+## IPL Runs Inning Per 6 Overs
