@@ -50,6 +50,7 @@ The headers in the file are:
 - player_dismissed
 - other_wicket_type
 - Other_player_dismissed
+- current strike rate
 
 Input file is a test set CSV file which have details of 6 overs in 1 inning like: bowlers, batting team.
 
