@@ -1,5 +1,7 @@
 # IPL-RIP6O
 
+<img src="static/ccl.PNG" width="1000" height="540">
+
 ## IPL Runs Inning Per 6 Overs
 
 In this project, I am making a Machine Learning model that can predict the score after every six overs in an inning of match.
