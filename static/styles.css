@@ -1,0 +1,176 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  font-family: Inter;
+}
+
+.predict-button > a {
+  text-decoration: none;
+}
+
+.predict-button > p {
+  margin-top: 0;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+  margin-top: 20px;
+  /* border: 1px solid gray; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 480px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+.dropdown {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+select,
+.dropdown {
+  margin: 15px;
+  border-radius: 20px;
+  width: 70%;
+}
+
+.ipl__logo {
+  width: 90px;
+  padding-bottom: 20px;
+}
+
+.row {
+  width: 1400px;
+  padding-left: 90px;
+}
+
+/* Banners */
+
+.image-container {
+  position: relative;
+  float: none;
+}
+
+.navbar-brand {
+  font-family: "Bungee", cursive;
+}
+
+#banner1 {
+  border-radius: 20px;
+  display: inline-block;
+  position: absolute;
+  left: 40px;
+  top: -5px;
+  width: 350px;
+  height: 600px;
+  -webkit-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+  -moz-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+  box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+  margin-top: 120px;
+}
+
+#banner2 {
+  display: inline-block;
+  width: 350px;
+  height: 600px;
+  position: absolute;
+  right: 40px;
+  top: -5px;
+  border-radius: 15px;
+  margin-top: 120px;
+  -webkit-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+  -moz-box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+  box-shadow: 7px 6px 18px -2px rgba(94, 94, 94, 0.61);
+}
+
+.img-poster {
+  width: 350px;
+  height: 600px;
+  border-radius: 15px;
+}
+
+.predict-button {
+  width: 150px;
+  height: 50px;
+  border: 0;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 50px;
+}
+
+.predict-button:hover {
+  background-color: black;
+}
+
+.home__title {
+  margin-top: 45px;
+}
+
+.card-body {
+  width: 100px;
+  height: 100px;
+}
+
+.description > p {
+  font-size: 18px;
+}
+
+.team-name {
+  text-decoration: none !important;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #3c3938 !important;
+  cursor: pointer;
+  margin-top: 0 !important;
+  margin-bottom: 0;
+}
+
+.copyright-text {
+  margin-top: 0;
+}
+
+.fa-github:hover {
+  cursor: pointer;
+  color: black;
+  background-size: 20px;
+}
+
+.team-name > p > a {
+  text-decoration: none !important;
+}
+
+.madeby {
+  /* margin-top: 10px; */
+  margin-bottom: 0 !important;
+}
+
+.footer-description {
+  margin: 0;
+}

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <title>
+      IPL-RIP6O
+    </title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+
+
+  </head>
+  <body class="text-center">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <img
+        src="{{ url_for('static', filename= 'ball.png') }}"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </nav>
+
+    <div class="container home__title">
+      <h2 class="container-heading">
+        <span class="heading_second"></span>
+      </h2>
+      <div class="description">
+          <strong> Indian Premier League Runs Innings Per 6 Overs Predictor </strong>
+      </div>
+    </div>
+
+    <main class="form-signin">
+      <form action="{{ url_for('result') }}" method="POST">
+        <h1 class="h3 mb-3 fw-normal">Start Predicting</h1>
+
+        <!-- Select venue -->
+        <select
+          id="venue"
+          class="selectpicker form-control"
+          title="Select Venue"
+          data-live-search="true"
+          data-style="btn-dark"
+          name="match_venue"
+        >
+        </select>
+
+        <script>
+          var select = document.getElementById("venue");
+          var elmts = [
+            "M Chinnaswamy Stadium",
+            "MA Chidambaram Stadium, Chepauk",
+            "Eden Gardens",
+            "Newlands",
+            "Kingsmead",
+            "St George's Park",
+            "New Wanderers Stadium",
+            "SuperSport Park",
+            "Nehru Stadium",
+            "Dr DY Patil Sports Academy",
+            "Holkar Cricket Stadium",
+            "Wankhede Stadium",
+            "Subrata Roy Sahara Stadium",
+            "Sheikh Zayed Stadium",
+            "Dubai International Cricket Stadium",
+            "JSCA International Stadium Complex",
+            "Sardar Patel Stadium, Motera",
+            "Shaheed Veer Narayan Singh International Stadium",
+            "Saurashtra Cricket Association Stadium",
+            "Feroz Shah Kotla",
+            "Rajiv Gandhi International Stadium, Uppal",
+            "Maharashtra Cricket Association Stadium",
+            "M.Chinnaswamy Stadium",
+            "Punjab Cricket Association Stadium, Mohali",
+            "Sawai Mansingh Stadium",
+            "Brabourne Stadium",
+            "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium",
+            "Barabati Stadium",
+            "Punjab Cricket Association IS Bindra Stadium, Mohali",
+            "MA Chidambaram Stadium",
+            "Buffalo Park",
+            "Himachal Pradesh Cricket Association Stadium",
+            "Green Park",
+            "Vidarbha Cricket Association Stadium, Jamtha",
+            "Sharjah Cricket Stadium",
+            "Rajiv Gandhi International Stadium",
+            "Arun Jaitley Stadium",
+            "OUTsurance Oval",
+            "Punjab Cricket Association IS Bindra Stadium",
+            "De Beers Diamond Oval"
+          ];
+
+          for (var i = 0; i < elmts.length; i++) {
+            var optn = elmts[i];
+            var el = document.createElement("option");
+            el.textContent = optn;
+            el.value = optn;
+            select.appendChild(el);
+          }
+        </script>
+
+        <!-- Batting Team -->
+
+        <div>
+          <select
+            class="selectpicker form-control batting-team"
+            title="Select Batting Team"
+            data-style="btn-dark"
+            name="batting_team"
+          >
+            <option>Mumbai Indians </option>
+            <option>Chennai Super Kings</option>
+            <option>Royal Challengers Banglore</option>
+            <option>Delhi Capitals</option>
+            <option>Rajasthan Royals</option>
+            <option>Kolkata Knight Riders</option>
+            <option>Sunrizers Hyderabad</option>
+            <option>Punjab Kings</option>
+          </select>
+        </div>
+
+        <!-- Bowling Team -->
+
+        <select
+          class="selectpicker form-control bowling-team"
+          title="Select Bowling Team"
+          data-style="btn-dark"
+          name="bowling_team"
+        >
+          <option>Mumbai Indians</option>
+          <option>Chennai Super Kings</option>
+          <option>Royal Challengers Banglore</option>
+          <option>Delhi Capitals</option>
+          <option>Rajasthan Royals</option>
+          <option>Kolkata Knight Riders</option>
+          <option>Sunrizers Hyderabad</option>
+          <option>Punjab Kings</option>
+        </select>
+
+        <!-- Select Batsman -->
+
+        <select
+          id="Batsman"
+          class="selectpicker form-control"
+          title="Select Batsman"
+          data-live-search="true"
+          data-style="btn-dark"
+          name="striker"
+        >
+        </select>
+
+        <script>
+          var select = document.getElementById("striker");
+          var elmts = [
+            "BB McCullum",
+            "PA Patel",
+            "MS Dhoni",
+            "YK Pathan",
+            "SR Watson",
+            "RV Uthappa",
+            "SK Raina",
+            "IK Pathan",
+            "WP Saha",
+            "V Kohli",
+            "AM Rahane",
+            "G Gambhir",
+            "S Dhawan",
+            "MK Tiwary",
+            "SE Marsh",
+            "Yuvraj Singh",
+            "AB de Villiers",
+            "SP Goswami",
+            "KP Pietersen",
+            "CH Gayle",
+            "DR Smith",
+            "KD Karthik",
+            "RG Sharma",
+            "Harbhajan Singh",
+            "M Vijay",
+            "JP Duminy",
+            "DJ Bravo",
+            "NV Ojha",
+            "DA Warner",
+            "GJ Bailey",
+            "MK Pandey",
+            "AD Mathews",
+            "AP Tare",
+            "SS Tiwary",
+            "AT Rayudu",
+            "EJG Morgan",
+            "Mandeep Singh",
+            "KM Jadhav",
+            "IR Jaggi",
+            "UBT Chand",
+            "AJ Finch",
+            "MA Agarwal",
+            "RA Jadeja",
+            "R Sathish",
+            "CA Ingram",
+            "F du Plessis",
+            "R Bhatia",
+            "MN Samuels",
+            "DT Christian",
+            "STR Binny",
+            "KK Nair",
+            "M Vohra",
+            "Gurkeerat Singh",
+            "Q de Kock",
+            "GH Vihari",
+            "KV Sharma",
+            "A Mishra",
+            "NLTC Perera",
+            "JP Faulkner",
+            "SV Samson",
+            "MC Henriques",
+            "GJ Maxwell",
+            "CA Lynn",
+            "CJ Anderson",
+            "JA Morkel",
+            "KL Rahul",
+            "DA Miller",
+            "LMP Simmons",
+            "Ankit Sharma",
+            "SS Iyer",
+            "SPD Smith",
+            "AD Russell",
+            "AR Patel",
+            "KA Pollard",
+            "HH Pandya",
+            "JC Buttler",
+            "P Negi",
+            "DJ Hooda",
+            "MJ Guptill",
+            "SW Billings",
+            "KS Williamson",
+            "MP Stoinis",
+            "RR Pant",
+            "UT Khawaja",
+            "HM Amla",
+            "SA Yadav",
+            "Shakib Al Hasan",
+            "N Rana",
+            "KH Pandya",
+            "PP Chawla",
+            "C Munro",
+            "ER Dwivedi",
+            "JJ Roy",
+            "Vishnu Vinod",
+            "RA Tripathi",
+            "BA Stokes",
+            "SP Narine",
+            "TM Head",
+            "Ishan Kishan",
+            "SP Jackson",
+            "R Tewatia",
+            "C de Grandhomme",
+            "MM Ali",
+            "JM Bairstow",
+            "PP Shaw",
+            "NS Naik",
+            "SM Curran",
+            "SN Khan",
+            "V Shankar",
+            "Shubman Gill",
+            "JL Denly",
+            "E Lewis",
+            "DJM Short",
+            "AD Hales",
+            "K Gowtham",
+            "JC Archer",
+            "BCJ Cutting",
+            "AD Nath",
+            "SC Ganguly",
+            "RT Ponting",
+            "BJ Hodge",
+            "MN van Wyk",
+            "AN Ghosh",
+            "DJ Hussey",
+            "VVS Laxman",
+            "DPMD Jayawardene",
+            "M Klinger",
+            "JH Kallis",
+            "ML Hayden",
+            "MEK Hussey",
+            "SP Fleming",
+            "S Vidyut",
+            "CL White",
+            "PA Reddy",
+            "KC Sangakkara",
+            "YV Takawale",
+            "S Badrinath",
+            "T Kohli",
+            "SA Asnodkar",
+            "GC Smith",
+            "RJ Quiney",
+            "Niraj Patel",
+            "MS Bisla",
+            "M Kaif",
+            "FY Fazal",
+            "AA Jhunjhunwala",
+            "AG Paunikar",
+            "R Dravid",
+            "AL Menaria",
+            "ST Jayasuriya",
+            "PR Shah",
+            "DJ Thornely",
+            "JD Ryder",
+            "TD Paine",
+            "MD Mishra",
+            "WD Parnell",
+            "CJ Ferguson",
+            "MJ Clarke",
+            "AP Majumdar",
+            "TL Suman",
+            "S Anirudha",
+            "K Goel",
+            "RS Bopara",
+            "S Sohal",
+            "V Sehwag",
+            "CA Pujara",
+            "LRPL Taylor",
+            "W Jaffer",
+            "J Arunkumar",
+            "Misbah-ul-Haq",
+            "TM Dilshan",
+            "AB McDonald",
+            "A Mukund",
+            "S Rana",
+            "VH Zol",
+            "SR Tendulkar",
+            "MDKJ Perera",
+            "AM Nayar",
+            "KK Cooper",
+            "Shoaib Malik",
+            "PD Collingwood",
+            "DB Das",
+            "B Chipli",
+            "DB Ravi Teja",
+            "DJ Harris",
+            "JR Hopes",
+            "LA Pomersbach",
+            "AC Gilchrist",
+            "PC Valthaty",
+            "N Saini",
+            "Azhar Mahmood",
+            "SM Katich",
+            "MV Boucher",
+            "R Bishnoi",
+            "HH Gibbs",
+            "Anirudh Singh",
+            "AA Bilakhia",
+            "A Symonds",
+            "RE Levi",
+            "MJ Lumb",
+            "Y Nagar",
+            "MS Wade",
+            "RE van der Merwe",
+            "M Manhas",
+            "OA Shah",
+            "R McLaren",
+            "AC Blizzard",
+            "CM Gautam",
+            "LR Shukla",
+            "BB Samantray",
+            "DJG Sammy",
+            "RN ten Doeschate"
+          ];
+
+          for (var i = 0; i < elmts.length; i++) {
+            var optn = elmts[i];
+            var el = document.createElement("option");
+            el.textContent = optn;
+            el.value = optn;
+            select.appendChild(el);
+          }
+        </script>
+
+        <!-- Select Bowlers -->
+        <select
+          id="bowlers"
+          class="selectpicker form-control"
+          title="Select Bowlers (2 - 6)"
+          name="bowlers"
+          data-live-search="true"
+          multiple
+          data-max-options="6"
+          data-style="btn-dark"
+        >
+        </select>
+
+        <script>
+          var select = document.getElementById("bowlers");
+          var elmts = [
+            "P Kumar",
+            "Z Khan",
+            "AA Noffke",
+            "JDP Oram",
+            "MS Gony",
+            "SM Pollock",
+            "FH Edwards",
+            "RP Singh",
+            "KP Pietersen",
+            "RR Powar",
+            "YA Abdulla",
+            "IK Pathan",
+            "VS Malik",
+            "PP Chawla",
+            "DP Nannes",
+            "A Nehra",
+            "A Mishra",
+            "PJ Sangwan",
+            "R Vinay Kumar",
+            "JH Kallis",
+            "JD Ryder",
+            "RJ Harris",
+            "A Kumble",
+            "R Ashwin",
+            "DL Vettori",
+            "TM Dilshan",
+            "A Mithun",
+            "AC Thomas",
+            "B Lee",
+            "Iqbal Abdulla",
+            "Shakib Al Hasan",
+            "JD Unadkat",
+            "S Aravind",
+            "CH Gayle",
+            "BA Bhatt",
+            "Bipul Sharma",
+            "SJ Srivastava",
+            "RE van der Merwe",
+            "KP Appanna",
+            "M Kartik",
+            "AB Dinda",
+            "B Kumar",
+            "WD Parnell",
+            "MJ Clarke",
+            "SB Jakati",
+            "BW Hilfenhaus",
+            "SK Raina",
+            "MM Patel",
+            "AG Murtaza",
+            "UT Yadav",
+            "M Morkel",
+            "VR Aaron",
+            "P Negi",
+            "AR Patel",
+            "P Awana",
+            "MG Johnson",
+            "L Balaji",
+            "JP Duminy",
+            "S Nadeem",
+            "TG Southee",
+            "JP Faulkner",
+            "DS Kulkarni",
+            "SP Narine",
+            "M Muralitharan",
+            "MA Starc",
+            "AN Ahmed",
+            "PJ Cummins",
+            "Ankit Sharma",
+            "PV Tambe",
+            "YS Chahal",
+            "NM Coulter-Nile",
+            "TA Boult",
+            "I Sharma",
+            "KV Sharma",
+            "Sandeep Sharma",
+            "Anureet Singh",
+            "GB Hogg",
+            "D Wiese",
+            "HV Patel",
+            "MJ McClenaghan",
+            "J Suchith",
+            "CH Morris",
+            "SR Watson",
+            "BB Sran",
+            "Mustafizur Rahman",
+            "DJ Hooda",
+            "MC Henriques",
+            "BCJ Cutting",
+            "Kuldeep Yadav",
+            "Rashid Khan",
+            "SL Malinga",
+            "Harbhajan Singh",
+            "JJ Bumrah",
+            "KH Pandya",
+            "Washington Sundar",
+            "BA Stokes",
+            "Imran Tahir",
+            "SN Thakur",
+            "K Rabada",
+            "Shivam Mavi",
+            "M Markande",
+            "DJ Willey",
+            "L Ngidi",
+            "S Sreesanth",
+            "DW Steyn",
+            "GD McGrath",
+            "Mohammad Asif",
+            "VY Mahesh",
+            "Sohail Tanvir",
+            "DP Vijaykumar",
+            "YK Pathan",
+            "SK Trivedi",
+            "AD Mascarenhas",
+            "AB Agarkar",
+            "BJ Hodge",
+            "R McLaren",
+            "SB Wagh",
+            "J Botha",
+            "MN Samuels",
+            "DJ Hussey",
+            "Azhar Mahmood",
+            "Harmeet Singh",
+            "STR Binny",
+            "Mohammed Shami",
+            "S Kaul",
+            "J Theron",
+            "Karanveer Singh",
+            "MM Sharma",
+            "Mohammad Nabi",
+            "Mohammed Siraj",
+            "DL Chahar",
+            "K Gowtham",
+            "JC Archer",
+            "S Gopal",
+            "M Prasidh Krishna",
+            "JP Behrendorff",
+            "HH Pandya",
+            "RA Jadeja",
+            "HF Gurney",
+            "AS Rajpoot",
+            "M Ashwin",
+            "Shahid Afridi",
+            "RG Sharma",
+            "Shoaib Ahmed",
+            "A Symonds",
+            "PP Ojha",
+            "B Geeves",
+            "BAW Mendis",
+            "MF Maharoof",
+            "JA Morkel",
+            "Yuvraj Singh",
+            "DR Smith",
+            "S Badree",
+            "DJ Bravo",
+            "R Bhatia",
+            "Pankaj Singh",
+            "SE Bond",
+            "DE Bollinger",
+            "CK Langeveldt",
+            "P Parameswaran",
+            "AD Mathews",
+            "V Pratap Singh",
+            "R Dhawan",
+            "R Rampaul",
+            "JO Holder",
+            "S Narwal",
+            "SMSM Senanayake",
+            "IC Pandey",
+            "CJ Anderson",
+            "GS Sandhu",
+            "SM Curran",
+            "AJ Tye",
+            "KK Ahmed",
+            "B Laughlin",
+            "B Stanlake",
+            "R Tewatia",
+            "LE Plunkett",
+            "Avesh Khan",
+            "AD Russell",
+            "IS Sodhi",
+            "DNT Zoysa",
+            "Kamran Khan",
+            "A Singh",
+            "LA Carseldine",
+            "T Thushara",
+            "SK Warne",
+            "DT Christian",
+            "SW Tait",
+            "A Chandila",
+            "KK Cooper",
+            "JDS Neesham",
+            "SA Abbott",
+            "MP Stoinis",
+            "Swapnil Singh",
+            "TS Mills",
+            "GC Viljoen",
+            "CV Varun",
+            "S Lamichhane",
+            "KMA Paul",
+            "Mujeeb Ur Rahman",
+            "SB Styris",
+            "VRV Singh",
+            "Y Venugopal Rao",
+            "K Goel",
+            "LR Shukla",
+            "S Ladda",
+            "R Ninan",
+            "NLTC Perera",
+            "AB McDonald",
+            "JEC Franklin",
+            "AA Jhunjhunwala",
+            "V Sehwag",
+            "KW Richardson",
+            "R Sharma",
+            "Parvez Rasool",
+            "CR Woakes",
+            "M Ntini",
+            "SC Ganguly",
+            "P Amarnath",
+            "DJ Muthuswami",
+            "Gagandeep Singh",
+            "KA Pollard",
+            "GH Vihari",
+            "TL Suman",
+            "R Shukla",
+            "RS Bopara",
+            "S Kaushik",
+            "KJ Abbott",
+            "KC Cariappa",
+            "Basil Thampi",
+            "NB Singh",
+            "LH Ferguson",
+            "SB Bangar",
+            "D du Preez",
+            "KMDN Kulasekara",
+            "CJ Jordan",
+            "T Natarajan",
+            "AF Milne",
+            "C de Grandhomme",
+            "MJ Santner",
+            "N Rana",
+            "MM Ali",
+            "PM Sarvesh Kumar",
+            "WPUJC Vaas",
+            "B Akhil",
+            "L Ablish",
+            "V Kohli",
+            "S Dhawan",
+            "GJ Maxwell",
+            "K Upadhyay",
+            "Anand Rajan",
+            "DJG Sammy",
+            "KS Williamson",
+            "KAJ Roach",
+            "Jaskaran Singh",
+            "JJ van der Wath",
+            "AM Salvi",
+            "RG More",
+            "J Yadav",
+            "BE Hendricks",
+            "Gurkeerat Singh",
+            "MR Marsh",
+            "CR Brathwaite",
+            "A Choudhary",
+            "Rasikh Salam",
+            "RW Price",
+            "Mohammad Hafeez",
+            "VS Yeligati",
+            "SD Chitnis",
+            "Umar Gul",
+            "S Tyagi",
+            "JR Hopes",
+            "RR Raje",
+            "A Flintoff",
+            "Joginder Sharma",
+            "CRD Fernando",
+            "AA Chavan",
+            "P Sahu",
+            "JE Taylor",
+            "MG Neser",
+            "AS Joseph",
+            "NA Saini",
+            "J Syed Mohammad",
+            "M de Lange",
+            "SC Kuggeleijn",
+            "AL Menaria",
+            "A Zampa",
+            "NL McCullum",
+            "RJ Peterson",
+            "Sunny Gupta",
+            "SA Yadav",
+            "P Suyal",
+            "SS Mundhe",
+            "AM Nayar",
+            "M Vijay",
+            "T Shamsi",
+            "P Ray Barman",
+            "O Thomas",
+            "R Parag",
+            "A Uniyal",
+            "AP Dole",
+            "CJ McKay",
+            "Shivam Sharma",
+            "JW Hastings",
+            "K Khejroliya",
+            "DJ Harris",
+            "SM Boland",
+            "K Santokie",
+            "SS Agarwal",
+            "TK Curran"
+          ];
+
+          for (var i = 0; i < elmts.length; i++) {
+            var optn = elmts[i];
+            var el = document.createElement("option");
+            el.textContent = optn;
+            el.value = optn;
+            select.appendChild(el);
+          }
+        </script>
+
+        <button class="predict-button" type="submit">
+          Predict
+        </button>
+      </form>
+    </main>
+
+    <!-- Left Carousel -->
+
+    <!-- IPL Banner - 1 -->
+    <div
+      id="banner1"
+      class="carousel slide d-none d-lg-block"
+      data-ride="carousel"
+      data-interval="1000"
+      data-pause="false"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'mi-poster.jpg') }}"
+            alt="Mumbai Indians"
+          />
+        </div>
+
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'csk-poster.jpg') }}"
+            alt="Chennai Super Kings"
+          />
+        </div>
+
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'rcb-poster.jpg') }}"
+            alt="Royal Challengers Banglore"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'dc-poster.jpg') }}"
+            alt="Delhi Capitals"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'kkr-poster.jpg') }}"
+            alt="Kolkata Knight Riders"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'rr-poster.jpg') }}"
+            alt="Rajasthan Royals"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'srh-poster.jpg') }}"
+            alt="Sunrizers Hyderabad"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'pkbs-poster.jpg') }}"
+            alt="Punjab Kings"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- IPL Banner - 2 -->
+    <div
+      id="banner2"
+      class="carousel slide d-none d-lg-block"
+      data-ride="carousel"
+      data-interval="1000"
+      data-pause="false"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'rohit.jpg') }}"
+            alt="Mumbai Indians"
+          />
+        </div>
+
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'dhoni.jpg') }}"
+            alt="Chennai Super Kings"
+          />
+        </div>
+
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'virat.jpg') }}"
+            alt="Royal Challengers Banglore"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'pant.jpg') }}"
+            alt="Delhi Capitals"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'morgan.jpg') }}"
+            alt="Kolkata Knight Riders"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'sanju.jpg') }}"
+            alt="Rajasthan Royals"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'warner.jpg') }}"
+            alt="Sunrizers Hyderabad"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            class="d-block w-100 img-poster"
+            src="{{ url_for('static', filename= 'rahul.jpg') }}"
+            alt="Punjab Kings"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-description">
+        <p class="madeby"> Made by: </p>
+        <a href="https://github.com/thegautamkumarjaiswal" class="team-hrushabh">Gautam Kumar Jaiswal <i class="fab fa-github"></i></a>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap select -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+  </body>
+</html>

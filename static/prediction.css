@@ -1,0 +1,82 @@
+body {
+  background: url("stadium-2-medium.jpg");
+  background-size: 1920px 800px;
+}
+
+@font-face {
+  font-family: GrassFont;
+  src: url(HandDrawnLawn-Exae.ttf);
+}
+
+.score_text {
+  font-family: "Kalam", cursive;
+
+  color: #fff;
+  text-align: center;
+  margin-top: 150px;
+  font-size: 30px;
+}
+
+.card__body {
+  text-align: center;
+  font-family: "Kalam", cursive;
+  display: absolute;
+}
+
+.card-title {
+  font-size: 40px;
+}
+
+.card-subtitle {
+  font-size: 20px;
+}
+
+.row {
+  display: absolute;
+  align-items: center;
+}
+
+/* cards */
+
+.card {
+  display: flex;
+  font-family: "Kalam", cursive;
+  align-content: center;
+  margin: auto;
+  padding-top: 20px;
+  background-color: lightgreen;
+}
+
+.list-group-item {
+  font-size: 30px;
+  text-align: center;
+}
+
+.list-group-item > p {
+  font-size: 20px;
+  color: darkgray;
+}
+
+h2 {
+  text-align: center;
+}
+
+.team__logo {
+  width: 150px;
+  image-resolution: 100dpi;
+}
+
+.footer > p {
+  color: darkgray;
+}
+
+.navbar-brand {
+  font-family: "Bungee", cursive;
+}
+
+.test__div {
+  margin-top: 50px;
+  height: 500px;
+  text-align: center;
+  display: flex;
+}
